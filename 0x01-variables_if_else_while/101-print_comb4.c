@@ -1,26 +1,23 @@
-#include <stdio.h>
-
 /**
  * main - prints all possible different combinations of three digits
- *
  * Return: Always 0 (Success)
  */
 int main(void)
 {
-	int k, r, q;
+	int r, p, q;
 
-	for (k = 48; k < 58; k++)
+	for (r = 48; r < 58; r++)
 	{
-		for (r = 49; r < 58; r++)
+		for (p = 49; p < 58; p++)
 		{
 			for (q = 50; q < 58; q++)
 			{
-				if (q > r && r > k)
+				if (q > p && p > r)
 				{
-					putchar(k);
 					putchar(r);
+					putchar(p);
 					putchar(q);
-					if (k != 55 || m != 56)
+					if (r != 55 || p != 56)
 					{
 						putchar(',');
 						putchar(' ');
