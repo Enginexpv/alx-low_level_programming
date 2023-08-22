@@ -3,30 +3,34 @@
 #include <time.h>
 
 /**
- * main - program that generates a random password
+ * main - program that generates random password
  *
- * Return: Always 0.
+ * Return: Always 0 (Success)
  */
-
 int main(void)
 {
-    int password_length = 12;
-    char password[13];
-    const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?";
-    int charset_size = sizeof(charset) - 1;
+    int pass[100];
+    int i, sum, n;
+    char valid_chars[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-+=<>?:,{}[]";
+
+    sum = 0;
 
     srand(time(NULL));
 
-    for (int i = 0; i < password_length; i++)
+    for (i = 0; i < 100; i++)
     {
-        int index = rand() % charset_size;
-        password[i] = charset[index];
+        pass[i] = valid_chars[rand() % 77];
+        sum += pass[i];
+        putchar(pass[i]);
+
+        if (sum >= 2772)
+        {
+            n = 2772 - (sum - pass[i]);
+            pass[i] = n;
+            putchar(n);
+            break;
+        }
     }
-
-    password[password_length] = '\0';
-
-    printf("Generated Password: %s\n", password);
 
     return (0);
 }
-
