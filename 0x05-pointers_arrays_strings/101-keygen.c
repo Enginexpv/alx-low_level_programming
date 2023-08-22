@@ -3,34 +3,32 @@
 #include <time.h>
 
 /**
- * main - program that generates random password
+ * main - program that generates random passwords for the program
  *
- * Return: Always 0 (Success)
+ * Return: Always 0.
  */
 int main(void)
 {
-    int pass[100];
-    int i, sum, n;
-    char valid_chars[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-+=<>?:,{}[]";
+	int pass[100];
+	int r, sum, q;
 
-    sum = 0;
+	sum = 0;	
 
-    srand(time(NULL));
+	srand(time(NULL));
 
-    for (i = 0; i < 100; i++)
-    {
-        pass[i] = valid_chars[rand() % 77];
-        sum += pass[i];
-        putchar(pass[i]);
+	for (r = 0; r < 100; r++)
+	{
+		pass[r] = rand() % 78;
+		sum += (pass[r] + '0');
+		putchar(pass[r] + '0');
+		if ((2772 - sum) - '0' < 78)
+		{
+			q = 2772 - sum - '0';
+			sum += q;
+			putchar(q + '0');
+			break;
+		}
+	}
 
-        if (sum >= 2772)
-        {
-            n = 2772 - (sum - pass[i]);
-            pass[i] = n;
-            putchar(n);
-            break;
-        }
-    }
-
-    return (0);
+	return (0);
 }
