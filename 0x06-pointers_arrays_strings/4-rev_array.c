@@ -1,23 +1,18 @@
 #include "main.h"
 
 /**
- * _strcmp - compares two strings to see which is greater alphabetically
- *
- * @s1: string to compare
- * @s2: second string to compare
- *
- * Return: 1 if s1 greater, 0 if same, -1 if  different
+ * reverse_array - Reverses the content of an array of integers.
+ * @a: The array of integers to be reversed.
+ * @n: The number of elements in the array.
  */
-int _strcmp(char *s1, char *s2)
+void reverse_array(int *a, int n)
 {
-	while (*s1 != 0 || *s2 != 0)
+	int tmp, index;
+
+	for (index = n - 1; index >= n / 2; index--)
 	{
-		if (*s1 > *s2)
-			return (*s1 - *s2);
-		if (*s1 < *s2)
-			return (*s1 - *s2);
-		s1++;
-		s2++;
+		tmp = a[n - 1 - index];
+		a[n - 1 - index] = a[index];
+		a[index] = tmp;
 	}
-	return (0);
 }
